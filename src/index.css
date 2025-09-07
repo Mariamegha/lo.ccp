@@ -1,0 +1,214 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CloudCycle Design System - Cycling-focused with soft, pleasant colors */
+
+@layer base {
+  :root {
+    /* Main color palette */
+    --background: 220 20% 97%;
+    --foreground: 215 25% 27%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 27%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 27%;
+
+    /* Soft blue primary - trust and reliability */
+    --primary: 210 60% 65%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 210 60% 55%;
+
+    /* Pale green secondary - nature and cycling */
+    --secondary: 140 35% 75%;
+    --secondary-foreground: 140 45% 25%;
+    --secondary-hover: 140 35% 65%;
+
+    /* Pale teal accent - modern and fresh */
+    --accent: 175 40% 70%;
+    --accent-foreground: 175 50% 25%;
+    --accent-hover: 175 40% 60%;
+
+    /* Muted colors */
+    --muted: 220 15% 92%;
+    --muted-foreground: 215 15% 47%;
+
+    /* Status colors */
+    --success: 140 60% 60%;
+    --success-foreground: 0 0% 100%;
+    --warning: 45 90% 65%;
+    --warning-foreground: 45 50% 25%;
+    --destructive: 0 70% 65%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* UI Elements */
+    --border: 220 15% 88%;
+    --input: 220 15% 95%;
+    --ring: 210 60% 65%;
+
+    --radius: 0.75rem;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    --gradient-secondary: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--accent)));
+    --gradient-subtle: linear-gradient(180deg, hsl(var(--background)), hsl(var(--muted)));
+
+    /* Shadows */
+    --shadow-soft: 0 4px 20px -8px hsl(var(--primary) / 0.15);
+    --shadow-card: 0 2px 12px -4px hsl(215 25% 27% / 0.08);
+    --shadow-hover: 0 6px 24px -8px hsl(var(--primary) / 0.25);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
+
+@layer components {
+  /* Card styles */
+  .card-soft {
+    @apply bg-card rounded-xl shadow-[var(--shadow-card)] border border-border/50;
+  }
+
+  .card-hover {
+    @apply transition-[var(--transition-smooth)] hover:shadow-[var(--shadow-hover)] hover:-translate-y-1;
+  }
+
+  /* Gradient backgrounds */
+  .bg-gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .bg-gradient-secondary {
+    background: var(--gradient-secondary);
+  }
+
+  .bg-gradient-subtle {
+    background: var(--gradient-subtle);
+  }
+
+  /* Status indicators */
+  .status-pending {
+    @apply bg-warning/10 text-warning-foreground border border-warning/20;
+  }
+
+  .status-progress {
+    @apply bg-primary/10 text-primary-foreground border border-primary/20;
+  }
+
+  .status-fixed {
+    @apply bg-success/10 text-success-foreground border border-success/20;
+  }
+
+  /* Animation utilities */
+  .animate-fadeIn {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-slideUp {
+    animation: slideUp 0.5s ease-out forwards;
+  }
+
+  .animate-scale {
+    animation: scaleIn 0.3s ease-out forwards;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
